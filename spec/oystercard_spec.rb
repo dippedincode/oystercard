@@ -12,7 +12,7 @@ RSpec.describe Oystercard do
 
   describe '#top_up' do
     it 'tops up' do
-      expect(subject.top_up(5)).to eq 8
+      expect{ subject.top_up 5 }.to change{ subject.balance }.by 5
     end
   end
 end
