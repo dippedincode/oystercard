@@ -6,6 +6,13 @@ class Oystercard
   end
 
   def top_up(amount)
+    raise "Cannot Top-up: Balance cannot exceed 90" unless within_limit? amount
     @balance += amount
+  end
+
+  private
+
+  def within_limit?(amount)
+    @balance + amount <= 90
   end
 end

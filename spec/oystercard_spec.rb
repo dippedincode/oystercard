@@ -14,5 +14,9 @@ RSpec.describe Oystercard do
     it 'tops up' do
       expect{ subject.top_up 5 }.to change{ subject.balance }.by 5
     end
+    it 'prevents balance exceeding 90' do
+      message = "Cannot Top-up: Balance cannot exceed 90"
+      expect { subject.top_up(88) }.to raise_error(message)
+    end
   end
 end
