@@ -8,5 +8,5 @@ RSpec.describe Oystercard do
     end
   end
 
-  it { is_expected.to respond_to :top_up }
+  it { is_expected.to respond_to(:top_up).with(1).argument }
 end
