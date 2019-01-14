@@ -7,4 +7,6 @@ RSpec.describe Oystercard do
       expect(subject.balance).to eq 3
     end
   end
+
+  it { is_expected.to respond_to :top_up }
 end
