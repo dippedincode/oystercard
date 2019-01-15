@@ -1,3 +1,4 @@
+feature_tests.rb
 *.gem
 *.rbc
 /.config
