@@ -3,13 +3,13 @@ require 'oystercard'
 describe Oystercard do
   it { is_expected.to respond_to :balance }
   it { is_expected.to respond_to(:deduct).with(1).argument }
+  it { is_expected.to respond_to :in_journey? }
 
   describe '#balance' do
     it 'has a default balance of 0' do
       expect(subject.balance).to eq 0
     end
   end
-
 
   it { is_expected.to respond_to(:top_up).with(1).argument }
 
