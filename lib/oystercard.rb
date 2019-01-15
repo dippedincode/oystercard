@@ -10,9 +10,10 @@ class Oystercard
     @balance += amount
   end
 
-  def deduct
+  def deduct(amount)
+    @balance -= amount
   end
-  
+
   private
 
   def within_limit?(amount)
