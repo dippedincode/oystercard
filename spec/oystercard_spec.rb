@@ -1,6 +1,8 @@
 require 'oystercard'
 
 describe Oystercard do
+  let(:station){ double :station }
+
   it { is_expected.to respond_to :balance }
   # it { is_expected.to respond_to(:deduct).with(1).argument }
   it { is_expected.to respond_to :in_journey? }
@@ -23,12 +25,6 @@ describe Oystercard do
     end
   end
   
-  # describe '#deduct' do
-  #   it 'deducts balance by specified amount' do
-  #     expect {subject.deduct(5) }.to change{ subject.balance }.by -5
-  #   end
-  # end
-
   describe '#in_journey?' do
     describe 'tells us' do
       it 'initially card is not in journey' do
@@ -39,7 +35,7 @@ describe Oystercard do
     describe 'should be true' do
       it 'when card touches in' do
         subject.top_up(10)
-        subject.touch_in
+        subject.touch_in(station)
         expect(subject).to be_in_journey
       end
     end
@@ -47,7 +43,7 @@ describe Oystercard do
     describe 'should be false' do
       it 'when card touches out' do
         subject.top_up(10)
-        subject.touch_in
+        subject.touch_in(station)
         subject.touch_out
         expect(subject).to_not be_in_journey
       end
@@ -56,14 +52,21 @@ describe Oystercard do
     describe '#touch_in' do
       it 'prevents journey happening' do
         message = "Cannot Travel: Balance too low"
-        expect { subject.touch_in }.to raise_error(message)
+        expect { subject.touch_in(station) }.to raise_error(message)
       end
+
+      it 'records entry_station' do
+        subject.top_up(10)
+        subject.touch_in(station)
+        expect(subject.entry_station).to eq(station)
+      end
+
     end
 
     describe '#touch_out' do
       it 'deducts correct journey fare' do
         subject.top_up(10)
-        subject.touch_in
+        subject.touch_in(station)
         expect { subject.touch_out }.to change{ subject.balance }.by -2
       end
     end
