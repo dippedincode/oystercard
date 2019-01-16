@@ -42,6 +42,15 @@ describe Oystercard do
         expect(subject).to be_in_journey
       end
     end
+
+    describe 'should be false' do
+      it 'when card touches out' do
+        subject.touch_in
+        subject.touch_out
+        expect(subject).to_not be_in_journey
+      end
+    end
+
   end
 
 end
