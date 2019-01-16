@@ -54,12 +54,17 @@ describe Oystercard do
     end
 
     describe '#touch_in' do
-      # it 'tops up' do
-      #   expect{ subject.top_up 5 }.to change{ subject.balance }.by 5
-      # end
       it 'prevents journey happening' do
         message = "Cannot Travel: Balance too low"
         expect { subject.touch_in }.to raise_error(message)
+      end
+    end
+
+    describe '#touch_out' do
+      it 'deducts correct journey fare' do
+        subject.top_up(10)
+        subject.touch_in
+        expect { subject.touch_out }.to change{ subject.balance }.by -2
       end
     end
 
