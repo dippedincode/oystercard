@@ -77,6 +77,7 @@ describe Oystercard do
         subject.touch_out(out_station)
         expect(subject.entry_station).to be_nil
         expect(subject.exit_station).to eq(out_station)
+        expect(subject.this_journey).to eq({:start => in_station, :end => out_station})
       end
 
     end
