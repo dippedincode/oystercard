@@ -23,7 +23,11 @@ class Oystercard
   end
 
   def touch_in
-    @in_journey = true
+    if @balance < 1
+      fail "Cannot Travel: Balance too low"
+    else
+      @in_journey = true
+    end
   end
 
   def touch_out

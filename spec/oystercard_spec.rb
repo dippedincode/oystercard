@@ -38,6 +38,7 @@ describe Oystercard do
 
     describe 'should be true' do
       it 'when card touches in' do
+        subject.top_up(10)
         subject.touch_in
         expect(subject).to be_in_journey
       end
@@ -45,9 +46,20 @@ describe Oystercard do
 
     describe 'should be false' do
       it 'when card touches out' do
+        subject.top_up(10)
         subject.touch_in
         subject.touch_out
         expect(subject).to_not be_in_journey
+      end
+    end
+
+    describe '#touch_in' do
+      # it 'tops up' do
+      #   expect{ subject.top_up 5 }.to change{ subject.balance }.by 5
+      # end
+      it 'prevents journey happening' do
+        message = "Cannot Travel: Balance too low"
+        expect { subject.touch_in }.to raise_error(message)
       end
     end
 
