@@ -2,7 +2,7 @@ require 'oystercard'
 
 describe Oystercard do
   it { is_expected.to respond_to :balance }
-  it { is_expected.to respond_to(:deduct).with(1).argument }
+  # it { is_expected.to respond_to(:deduct).with(1).argument }
   it { is_expected.to respond_to :in_journey? }
 
   describe '#balance' do
@@ -23,11 +23,11 @@ describe Oystercard do
     end
   end
   
-  describe '#deduct' do
-    it 'deducts balance by specified amount' do
-      expect {subject.deduct(5) }.to change{ subject.balance }.by -5
-    end
-  end
+  # describe '#deduct' do
+  #   it 'deducts balance by specified amount' do
+  #     expect {subject.deduct(5) }.to change{ subject.balance }.by -5
+  #   end
+  # end
 
   describe '#in_journey?' do
     describe 'tells us' do
