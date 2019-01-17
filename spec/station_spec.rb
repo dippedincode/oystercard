@@ -9,6 +9,10 @@ describe Station do
   it "Tests to see if station name is remembered" do 
     expect(subject.name).to eq("Aldgate")
   end 
+
+  it "Tests to see if it remebers its zone" do
+    expect(subject.zone).to eq("1")
+  end 
 end 
 
 
