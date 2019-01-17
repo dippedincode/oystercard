@@ -71,12 +71,13 @@ describe Oystercard do
         expect { subject.touch_out(out_station) }.to change{ subject.balance }.by -(Oystercard::MINIMUM_CHARGE)
       end
 
-      it 'forgets entry_station and records exit station' do
+      it 'forgets entry_station and records exit station and puts journey in array' do
         subject.top_up(10)
         subject.touch_in(in_station)
         subject.touch_out(out_station)
         expect(subject.entry_station).to be_nil
         expect(subject.this_journey).to eq({:start => in_station, :end => out_station})
+        expect(subject.all_journeys.last).to eq(subject.this_journey)
       end
 
     end
