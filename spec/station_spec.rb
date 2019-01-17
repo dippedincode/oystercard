@@ -1,10 +1,8 @@
 require 'station.rb'
 
-RSpec.describe Station do
-
-it { is_expected.to respond_to :name }
-
-
+describe Station do
+  it { is_expected.to respond_to :name }
+  it { is_expected.to respond_to :zone }
 
 
   # it "gives us a station name as a string" do 
