@@ -16,12 +16,3 @@ describe Station do
 end 
 
 
-
-
-# describe Station do
-#   it "gives us a station name as a string" do 
-#     station = Station.new("tooting")
-#     expect(station.name).to be_kind_of String
-#   end
-
-# end 

@@ -11,3 +11,4 @@ Contributors
 3. Kwaku Ankobia
 4. Erin Stevenson
 5. Jake Atkin
+6. Thomas Marano

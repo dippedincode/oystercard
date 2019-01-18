@@ -5,7 +5,6 @@ describe Oystercard do
   let(:out_station){ double :out_station }
 
   it { is_expected.to respond_to :balance }
-  # it { is_expected.to respond_to(:deduct).with(1).argument }
   it { is_expected.to respond_to :in_journey? }
 
   describe '#balance' do
