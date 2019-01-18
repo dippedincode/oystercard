@@ -4,7 +4,7 @@ class Journey
   end 
 
 
-  # def out_station
-  # end 
+  def exit_station
+  end 
 
 end
